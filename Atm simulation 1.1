@@ -1,0 +1,65 @@
+/************************
+ *  Auther:Yusuf Tapur  *
+ *  Date:15.12.2024     *
+ *  ATM simulation      *
+ *  Version: 1.1        *
+ ************************/
+import java.util.Scanner;
+public class try1 {
+    public static void main(String[] args) {
+        Scanner inp = new Scanner(System.in);
+        System.out.print("Please enter your balance: ");
+        double balance = inp.nextDouble();
+        if (balance >= 0) {
+            System.out.println("What would yu like to do today?");
+            System.out.println("1 to see your Balance");
+            System.out.println("2 to Withdraw cash");
+            System.out.println("3 to Deposit cash");
+            System.out.println("4 to exit");
+            System.out.print("Please enter your selection: ");
+            int selection = inp.nextInt();
+            if (selection == 1) {
+                System.out.println("The current balance is " + balance);
+                System.out.println("Have a nice day.");
+            }
+            else if (selection == 2) {
+                System.out.print("Please enter the amount to withdraw: ");
+                double withdraw = inp.nextDouble();
+                if (withdraw > 0 && withdraw <= balance) {
+                    balance -= withdraw;
+                    System.out.println("The cuurent balance is " + balance);
+                    System.out.println("Have a nice day.");
+                } else {
+                    System.out.println("ERROR: Invalid withdrawal amount.");
+                    System.out.println("The cuurent balance is " + balance);
+                    System.out.println("Have a nice day.");
+                }
+            }
+            else if (selection == 3){
+                System.out.print("Please enter the amount to deposit: ");
+                double deposit =inp.nextDouble();
+                if (deposit > 0){
+                    balance += deposit;
+                    System.out.println("The cuurent balance is " + balance);
+                    System.out.println("Have a nice day.");
+                }
+                else {
+                    System.out.println("ERROR: Invalid deposit amount.");
+                    System.out.println("The cuurent balance is " + balance);
+                    System.out.println("Have a nice day.");
+                }
+
+            }
+            else if (selection == 4){
+
+            }
+            else {
+                System.out.println("ERROR: Invalid selection. Exiting System.");
+            }
+        }
+        else {
+            System.out.println("ERROR: Invalid balance entered.");
+        }
+
+    }
+}
