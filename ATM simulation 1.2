@@ -1,0 +1,200 @@
+/************************
+ *  Auther:Yusuf Tapur  *
+ *  Date:15.12.2024     *
+ *  ATM simulation      *
+ *  Version: 1.2        *
+ ************************/
+import java.util.Scanner;
+import java.util.Random;
+public class try2 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Please enter your name >> ");
+        String name = input.nextLine();
+        System.out.print("Please enter your surname >> ");
+        String surname = input.nextLine();
+        System.out.print("Please enter your starting balance >> ");
+        double balance = input.nextDouble();
+        while (balance < 0){
+            System.out.println("ERROR: Invalid balance.");
+            System.out.print("Please enter your starting balance >> ");
+            balance = input.nextDouble();
+        }
+        boolean isName = false;
+        if (name.length() > 0 && surname.length() >0 && balance >= 0){
+            isName = true;
+        }
+        name = name.substring(0,1).toUpperCase()+name.substring(1);
+        surname = surname.toUpperCase();
+
+        Scanner scanner = new Scanner(System.in);
+        while (isName){
+            System.out.println("Hello " + name + " "+ surname);
+            System.out.println("What would you like today?\n" +
+                    "B to see (B)alance in your account\n" +
+                    "W to (W)ithdraw cash\n" +
+                    "D to (D)eposit cash\n" +
+                    "P to (P)ay bill\n" +
+                    "Q to (Q)uit");
+            System.out.print("Please enter your selection >> ");
+            String selection = scanner.nextLine();
+            selection = selection.toUpperCase();
+
+            switch (selection){
+                case "B":
+                    System.out.printf("Your account balance is %.2f\n", balance);
+                    break;
+                case "W":
+                    System.out.print("How much are you withdrawing?");
+                    double withdraw = input.nextDouble();
+                    if (withdraw <= 0 && withdraw > balance){
+                        System.out.println("ERROR. Invaid withdrawal amount.");
+                    }
+                    else {
+                        balance -= withdraw;
+                        int paper200=0, paper100=0, paper50=0, paper20=0, paper10=0, paper5=0, paper1=0;
+                        int a=0, b=0, c=0, d=0, e=0, f=0, g=0;
+                        while (withdraw >= 200){
+                            withdraw -=200;
+                            paper200++;
+                            a++;
+                        }
+                        while (withdraw >=100){
+                            withdraw-=100;
+                            paper100++;
+                            b++;
+                        }
+                        while (withdraw >= 50){
+                            withdraw-=50;
+                            paper50++;
+                            c++;
+                        }
+                        while (withdraw >= 20){
+                            withdraw-=20;
+                            paper20++;
+                            d++;
+                        }
+                        while (withdraw >= 10){
+                            withdraw-=10;
+                            paper10++;
+                            e++;
+                        }
+                        while (withdraw >= 5){
+                            withdraw-=5;
+                            paper5++;
+                            f++;
+                        }
+                        while (withdraw >= 1){
+                            withdraw-=1;
+                            paper1++;
+                            g++;
+                        }
+                        System.out.println("You will receive the folloving:");
+                        if (paper200 > 0){
+                            System.out.println(a + " - 200");
+                        }
+                        if (paper100 > 0){
+                            System.out.println(b + " - 100");
+                        }
+                        if (paper50 > 0){
+                            System.out.println(c + " - 50");
+                        }
+                        if (paper20 > 0){
+                            System.out.println(d + " - 20");
+                        }
+                        if (paper10 > 0){
+                            System.out.println(e + " - 10");
+                        }
+                        if (paper5 > 0){
+                            System.out.println(f + " - 5");
+                        }
+                        if (paper1 > 0){
+                            System.out.println(g + " - 1");
+                        }
+                    }
+                    break;
+                case "D" :
+                    System.out.print("How much are you depositing? ");
+                    double deposit = input.nextDouble();
+                    balance += deposit ;
+                    break;
+                case "P" :
+                    Scanner inp = new Scanner(System.in);
+                    Random random = new Random();
+                    double electricity = random.nextDouble() * 100;
+                    double water = random.nextDouble() * 100;
+                    double internet = random.nextDouble() * 100;
+                    System.out.println("Which of the following bills would you like to pay?\n" +
+                            "1 - Electricity\n" +
+                            "2 - Water\n" +
+                            "3 - Internet\n" );
+                    System.out.print("Please enter your selection >> ");
+                    int selection2 = input.nextInt();
+                    if (selection2 == 1){
+                        System.out.printf("Your electricity bill is %.2f\n", electricity);
+                        if (electricity <= balance ){
+                            System.out.println("Do you wish to pay this bill now (Y/N)");
+                            String bill = inp.nextLine();
+                            bill = bill.toUpperCase();
+                            switch (bill){
+                                case "Y" :
+                                    balance -= electricity;
+                                    System.out.println("Thank you for payment.");
+                                    break;
+                            }
+                            }
+                        else {
+                            System.out.println("You dont have sufficent funds to pay this bill.");
+                        }
+                    }
+                    else if (selection2 == 2){
+                        System.out.printf("Your water bill is %.2f\n", water);
+                        if (water <= balance ){
+                            System.out.println("Do you wish to pay this bill now (Y/N)");
+                            String bill = inp.nextLine();
+                            bill = bill.toUpperCase();
+                            switch (bill){
+                                case "Y" :
+                                    balance -= water;
+                                    System.out.println("Thank you for payment.");
+                                    break;
+                            }
+                        }
+                        else {
+                            System.out.println("You dont have sufficent funds to pay this bill.");
+                        }
+                    }
+                    else if (selection2 == 3){
+                        System.out.printf("Your internet bill is %.2f\n", internet);
+                        if (internet <= balance ){
+                            System.out.println("Do you wish to pay this bill now (Y/N)");
+                            String bill = inp.nextLine();
+                            bill = bill.toUpperCase();
+                            switch (bill){
+                                case "Y" :
+                                    balance -= internet;
+                                    System.out.println("Thank you for payment.");
+                                    break;
+                            }
+                        }
+                        else {
+                            System.out.println("You dont have sufficent funds to pay this bill.");
+                        }
+                    }
+                    else {
+
+                    }
+                    break;
+                case "Q" :
+                    System.out.println("Thank you for using our ATM. Have a nice day!");
+                    isName = false ;
+                    break;
+                default:
+                    if (selection != "W" && selection !="B" && selection !="P" && selection != "D" ){
+                        isName = false;
+                    }
+            }
+        }
+    input.close();
+    }
+}
